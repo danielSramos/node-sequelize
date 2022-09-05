@@ -2,7 +2,6 @@ const bodyParser = require('body-parser');
 const pessoas = require('./pessoasRoute');
 const niveis = require('./niveisRoute');
 const turmas = require('./turmasRoute');
-const matriculas = require('./matriculasRoute');
 
 module.exports = app => {
     const serverPath = 'localhost:3000/';
@@ -10,7 +9,6 @@ module.exports = app => {
     app.use(pessoas);
     app.use(niveis);
     app.use(turmas);
-    app.use(matriculas);
 
     app.get('/', (req, res) => {
         res.status(200).send({
