@@ -52,6 +52,16 @@ class TurmaController {
             res.status(500).json(err.message);
         }
     }
+
+    static async restoreTurma(req, res) {
+        const { id } = req.params;
+        try {
+            await database.Turmas.restore({ where: { id: Number(id) } });
+            return res.status(200).json({ message: `id ${id} restaurado.` });
+        } catch (err) {
+            res.status(500).json(err.message);
+        }
+    }
 }
 
 module.exports = TurmaController;

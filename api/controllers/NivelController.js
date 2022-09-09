@@ -7,7 +7,7 @@ class NivelController {
             const allNiveis = await database.Niveis.findAll();
             return res.status(200).json(allNiveis);
         } catch (err) {
-            res.status(500).json(err.message)
+            res.status(500).json(err.message);
         }
     }
 
@@ -17,7 +17,7 @@ class NivelController {
             const nivel = await database.Niveis.findOne({ where: { id: Number(id) } });
             return res.status(200).json(nivel);
         } catch (err) {
-            res.status(500).json(err.message)
+            res.status(500).json(err.message);
         }
     }
 
@@ -25,9 +25,9 @@ class NivelController {
         const newNivelReq = req.body;
         try {
             const create = await database.Niveis.create(newNivelReq);
-            return res.status(201).json(create)
+            return res.status(201).json(create);
         } catch (err) {
-            res.status(500).json(err.message)
+            res.status(500).json(err.message);
         }
     }
 
@@ -36,10 +36,10 @@ class NivelController {
         const updateReq = req.body;
         try {
             await database.Niveis.update(updateReq, { where: { id: Number(id) } });
-            const newInfo = await database.Niveis.findOne({ where: { id: Number(id) } })
+            const newInfo = await database.Niveis.findOne({ where: { id: Number(id) } });
             return res.status(200).json(newInfo);
         } catch (err) {
-            res.status(500).json(err.message)
+            res.status(500).json(err.message);
         }
     }
 
@@ -47,11 +47,22 @@ class NivelController {
         const { id } = req.params;
         try {
             await database.Niveis.destroy({ where: { id: Number(id) } });
-            return res.status(200).json({ message: 'Nivel deletado com sucesso!' })
+            return res.status(200).json({ message: 'Nivel deletado com sucesso!' });
         } catch (err) {
-            res.status(500).json(err.message)
+            res.status(500).json(err.message);
         }
     }
+
+    static async restoreNivel(req, res) {
+        const { id } = req.params;
+        try {
+            await database.Niveis.restore({ where: { id: Number(id) } });
+            return res.status(200).json({ message: `id ${id} resturado.` });
+        } catch (err) {
+            res.status(500).json(err.message);
+        }
+    }
+
 }
 
 module.exports = NivelController;
