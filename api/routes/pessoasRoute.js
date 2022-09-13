@@ -19,6 +19,7 @@ router.get('/pessoas/matricula/:turmaId/confirmadas', PessoaController.getMatric
 router.get('/pessoas/matricula/lotada', PessoaController.getTurmasFull);
 router.post('/pessoas/:estudanteId/matricula', PessoaController.createMatricula);
 router.post('/pessoas/:estudanteId/matricula/:matriulaId/restaura', PessoaController.restoreMatricula);
+router.post('/pessoas/:estudanteId/cancela', PessoaController.cancelPeople);
 router.put('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.updateMatricula);
 router.delete('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.destroyMatricula);
 
