@@ -38,7 +38,7 @@ class TurmaController {
         const updateReq = req.body;
         try {
             await turmasServices.updateRegister(updateReq, id);
-            const newInfo = await turmasServices.getOneRegister(id);
+            const newInfo = await turmasServices.getOneRegister({ id });
             return res.status(200).json(newInfo);
         } catch (err) {
             res.status(500).json(err.message);
